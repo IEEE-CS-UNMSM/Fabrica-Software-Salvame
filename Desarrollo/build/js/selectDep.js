@@ -13,4 +13,3 @@ departaments.forEach((dep)=>{
 })
 console.log(menu);
 console.log(departaments);
-console.log("wasdsad");
