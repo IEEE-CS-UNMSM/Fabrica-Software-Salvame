@@ -1,0 +1,16 @@
+#menu-ver{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ver-alerta{
+    margin-right: 30px;
+    width: 30%;
+    height: 40px;
+    margin: 0 auto;
+    font-size: larger;
+    text-align: center;
+    border-radius: 10px;
+    font-size: large;
+}
