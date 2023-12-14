@@ -1,0 +1,108 @@
+@use '../utilities/variables' as v;
+@use '../utilities/mixins' as m;
+
+.form {
+    padding: 5rem;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-family: v.$secondary-font; // TO-DO: Poppins
+
+    &__label {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 2rem;
+        padding: 1rem 2rem;
+        background-color: #D9D9D9;
+        border-radius: 2rem;
+
+        input {
+            // padding: 3rem;
+            background-color: #D9D9D9;
+            outline: none;
+            border: none;
+            font-size: 2.5rem;
+            width: 100%;
+        }
+
+        i {
+            font-size: 3rem;
+            color: #8F8F8FCC;
+        }
+    }
+
+    &__select {
+        padding: 1.5rem 3rem;
+        border: none;
+        background-color: #D9D9D9;
+        color: #757575;
+        border-radius: 2rem;
+        font-size: 2.5rem;
+        outline: none;
+
+        option {
+            outline: none
+        }
+    }
+
+    &__button {
+        padding: 1rem 2rem;
+        border: none;
+        background-color: #a6a6a6;
+        color: #ffffff;
+        border-radius: 2rem;
+        font-size: 2.5rem;
+        cursor: pointer;
+
+        &:hover {
+            background-color: #757575;
+            color: #D9D9D9;
+        }
+    }
+}
+
+.informe {
+    padding-bottom: 5rem;
+
+    &__grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+        gap: 5rem;
+    }
+}
+
+.card {
+    // height: 17rem;
+   
+    border-radius: 1.5rem;
+    overflow: hidden;
+    box-shadow: 1px 1px 10px 1px rgba(0, 0, 0, 0.25);
+
+    &__image {
+        width: 100%;
+    }
+
+    &__content {
+        background-image: url('../../src/img/pattern 8.png');
+        padding: 2rem;
+    }
+
+    &__title {
+        text-align: left;
+        font-size: 2rem;
+    }
+
+    &__lugar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        color: #787878;
+    }
+
+    &__fecha {
+        text-align: right;
+        color: #787878;
+    }
+}

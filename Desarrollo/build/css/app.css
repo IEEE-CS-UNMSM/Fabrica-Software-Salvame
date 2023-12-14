@@ -1091,4 +1091,94 @@ template {
   background-color: #7cc67b;
 }
 
+.form {
+  padding: 5rem;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  font-family: "Forum", serif;
+}
+.form__label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+  padding: 1rem 2rem;
+  background-color: #D9D9D9;
+  border-radius: 2rem;
+}
+.form__label input {
+  background-color: #D9D9D9;
+  outline: none;
+  border: none;
+  font-size: 2.5rem;
+  width: 100%;
+}
+.form__label i {
+  font-size: 3rem;
+  color: rgba(143, 143, 143, 0.8);
+}
+.form__select {
+  padding: 1.5rem 3rem;
+  border: none;
+  background-color: #D9D9D9;
+  color: #757575;
+  border-radius: 2rem;
+  font-size: 2.5rem;
+  outline: none;
+}
+.form__select option {
+  outline: none;
+}
+.form__button {
+  padding: 1rem 2rem;
+  border: none;
+  background-color: #a6a6a6;
+  color: #ffffff;
+  border-radius: 2rem;
+  font-size: 2.5rem;
+  cursor: pointer;
+}
+.form__button:hover {
+  background-color: #757575;
+  color: #D9D9D9;
+}
+
+.informe {
+  padding-bottom: 5rem;
+}
+.informe__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 5rem;
+}
+
+.card {
+  border-radius: 1.5rem;
+  overflow: hidden;
+  box-shadow: 1px 1px 10px 1px rgba(0, 0, 0, 0.25);
+}
+.card__image {
+  width: 100%;
+}
+.card__content {
+  background-image: url("../../src/img/pattern 8.png");
+  padding: 2rem;
+}
+.card__title {
+  text-align: left;
+  font-size: 2rem;
+}
+.card__lugar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #787878;
+}
+.card__fecha {
+  text-align: right;
+  color: #787878;
+}
+
 /*# sourceMappingURL=app.css.map */
