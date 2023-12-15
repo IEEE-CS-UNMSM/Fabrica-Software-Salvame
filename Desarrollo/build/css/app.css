@@ -1167,11 +1167,11 @@ template {
   background-image: url("../../src/img/pattern 8.png");
   padding: 2rem;
 }
-.card__title {
+.card .Familia {
   text-align: left;
   font-size: 2rem;
 }
-.card__lugar {
+.card .Zona {
   display: flex;
   justify-content: space-between;
   align-items: center;
