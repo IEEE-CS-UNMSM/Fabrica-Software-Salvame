@@ -16,9 +16,35 @@ function filtroBusqueda(input, selector, selectElement) {
             });
         }
     });
-
-   
 }
 
 const selectElement = document.querySelector('.form__select');
 filtroBusqueda('#filtroNombre', '.card', selectElement);
+
+
+document.addEventListener('DOMContentLoaded', function () {
+    document.getElementById('sortSelect').onchange = function () {
+        sortCards(this.value);
+        console.log(sortCards(this.value));
+    };
+
+    function sortCards(sortBy) {
+        const cardsContainer = document.querySelector('.informe__grid');
+        const cards = Array.from(cardsContainer.getElementsByClassName('card'));
+
+        cards.sort((a, b) => {
+            const aValue = a.querySelector(`.${sortBy}`).textContent.toLowerCase();
+            const bValue = b.querySelector(`.${sortBy}`).textContent.toLowerCase();
+            return aValue.localeCompare(bValue);
+        });
+
+        while (cardsContainer.firstChild) {
+            cardsContainer.removeChild(cardsContainer.firstChild);
+        }
+
+        cards.forEach(card => {
+            cardsContainer.appendChild(card);
+        });
+    }
+});
+
