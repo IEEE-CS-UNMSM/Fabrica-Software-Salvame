@@ -31,11 +31,17 @@ document.addEventListener('DOMContentLoaded', function () {
     function sortCards(sortBy) {
         const cardsContainer = document.querySelector('.informe__grid');
         const cards = Array.from(cardsContainer.getElementsByClassName('card'));
+        console.log('cardContainer');
+        console.log(cardsContainer);
+        console.log('cards');
+        console.log(cards);
 
         cards.sort((a, b) => {
             const aValue = a.querySelector(`.${sortBy}`).textContent.toLowerCase();
             const bValue = b.querySelector(`.${sortBy}`).textContent.toLowerCase();
+            console.log(aValue.localeCompare(bValue));
             return aValue.localeCompare(bValue);
+            
         });
 
         while (cardsContainer.firstChild) {
