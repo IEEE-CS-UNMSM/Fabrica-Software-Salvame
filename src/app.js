@@ -8,7 +8,7 @@ import session from 'express-session';
 import url from 'url';
 
 import register from './routes/register.routes.js';
-import loginRoutes from './routes/login.routes.js';
+import loginRoutes from './routes/user/login.routes.js';
 import signinRoutes from './routes/user/create.routes.js';
 import alertsRoutes from './routes/api/index.routes.js';
 import informesRouter from './routes/informes.routes.js';
