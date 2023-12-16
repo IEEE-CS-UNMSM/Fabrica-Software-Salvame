@@ -2,7 +2,8 @@ import morgan from 'morgan';
 import express, { json } from 'express';
 import register from './routes/register.routes.js'
 import login from './routes/login.routes.js'
-
+import alert from "./routes/alertas.routes.js"
+import animal from "./routes/animal.routes.js"
 import { engine } from 'express-handlebars';
 import session from 'express-session';
 import bodyParser from 'body-parser';
@@ -19,7 +20,8 @@ app.get('/', async(req, res)=>{
 
 app.use(register);
 app.use(login);
-
+app.use(alert);
+app.use(animal)
 
 // Middleware del parser
 app.use(express.urlencoded({ extended: true }));

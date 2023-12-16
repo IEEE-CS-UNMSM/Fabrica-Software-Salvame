@@ -5,7 +5,7 @@ import login from './routes/login.routes.js';
 import alertsRoutes from './routes/api/index.routes.js';
 import informesRouter from './routes/informes.routes.js';
 import path from 'path';
-
+import animal from "./routes/animal.routes.js"
 import { engine } from 'express-handlebars';
 import session from 'express-session';
 
@@ -60,6 +60,7 @@ app.get('/:id/mis-alertas', (req, res) => {
 app.use('/api', alertsRoutes);
 app.use(register);
 app.use(login);
+app.use(animal);
 
 app.use(express.urlencoded({ extended: true }));
 

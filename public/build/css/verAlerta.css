@@ -1,0 +1,51 @@
+#menu-ver{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.ver-alerta{
+    margin-right: 30px;
+    width: 30%;
+    height: 40px;
+    margin: 0 auto;
+    font-size: larger;
+    text-align: center;
+    border-radius: 10px;
+    font-size: large;
+}
+#separador{
+    height: 100px;
+}
+
+.container-main-map{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.map-section{
+    display: flex;
+    align-items: center;
+}
+
+img{
+    width: 250px;
+    margin: 10%;
+    margin-left: 50%;
+    align-self: flex-start;
+}
+
+
+#map{
+    width: 750px;
+    height:700px;
+    align-self: flex-end;
+    left: 25%;
+    margin-bottom: 10%;
+}
+
+#welcome-alert{
+    font-size: 500%;
+}
