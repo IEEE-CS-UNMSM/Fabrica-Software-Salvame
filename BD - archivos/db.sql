@@ -255,3 +255,14 @@ BEGIN
     AND (provinciaParam IS NULL OR u.provincia = provinciaParam);
 END 
 //DELIMITER ;
+
+
+-- Este procedimiento obtiene la información de un usuario según su ID
+DELIMITER //
+
+CREATE PROCEDURE GetUserByCorreo(IN correo_param VARCHAR(255))
+BEGIN
+  SELECT * FROM usuario_basico WHERE correo = correo_param;
+END 
+ 
+

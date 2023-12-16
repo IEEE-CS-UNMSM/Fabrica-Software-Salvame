@@ -1,27 +1,60 @@
 import { pool } from "../models/db.config.js";
+import mysql from 'mysql2/promise';
 import jwt from 'jsonwebtoken';
 import dotenv from 'dotenv';
 dotenv.config();
 
-export const login = async (req, res) => {
-    const { correo, password } = req.body;
+
+const getUser = async (correo) => {
+    const connection = await pool.getConnection();
 
     try {
-        const [result] = await pool.query(`SELECT * FROM usuario_basico WHERE correo = ?;`, [correo]);
+        const [rows] = await connection.execute('CALL GetUserByCorreo(?)', [correo]);
+        return rows[0];
+    } finally {
+        connection.release(); // Release the connection back to the pool
+    }
+};
 
-        if (result.length === 0) {
-            return res.status(401).json({ message: 'Usuario no encontrado' });
+export const login = async (req, res) => {
+    const {correo, contrasenia} = req.body;
+
+    try {
+        const user = await getUser(correo);
+
+        const userObject = user[0];
+
+        // Create a payload object with the correct property names
+        const userPayload = {
+            userId: userObject.idPerfilUsuario,
+            userNombres: userObject.nombres,
+            userApellidos: userObject.apellidos,
+            userCorreo: userObject.correo,
+            userContrasenia: userObject.contraseña,
+            userFN: userObject.fechaNac
+        };
+
+        if (user.contraseña != contrasenia) {
+            return res.status(401).json({
+                message: 'Login inválido' 
+            });
         }
 
-        const user = result[0];
+        delete user.contraseña;
+        console.log('JWT: ', process.env.JWT_SECRET);
+        console.log('user: ', userPayload.userId);
+        const token = jwt.sign(userPayload, process.env.JWT_SECRET, { expiresIn: '1h' }
+        );
 
-        if (user.contraseña !== password) {
-            return res.status(401).json({ message: 'Contraseña incorrecta' });
-        }
+        res.cookie("token", token, {
+            httpOnly: true,
+            //secure: true,
+            //maxAge: 1000000,
+            //signed: true
+        });
 
-        const token = jwt.sign({ userId: user.idPerfilUsuario }, process.env.JWT_SECRET, { expiresIn: '1h' });
+        return res.redirect(`/${userPayload.userId}`);
 
-        res.status(200).json({ message: 'Login exitoso', token, userId: user.idPerfilUsuario });
     } catch (error) {
         console.error(error);
         res.status(500).json({ message: 'Error en el servidor' });
