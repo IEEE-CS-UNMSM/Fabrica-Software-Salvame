@@ -214,7 +214,6 @@ VALUES ('54872369', 78901, 5, '2023-12-11', '2023-12-11 11:55:00', 'Gato', 'Enco
 
 
 
-DELIMITER //
 CREATE PROCEDURE GetNormalAlerts()
 BEGIN
     SELECT
@@ -228,10 +227,6 @@ BEGIN
     WHERE
         ha.tipoAlerta = 'Normal';
 END 
-//DELIMITER ;
-
--- Crear procedimiento almacenado
-DELIMITER //
 
 CREATE PROCEDURE VisualizarInforme(
   IN nombreCientificoParam VARCHAR(30),
@@ -254,11 +249,7 @@ BEGIN
     AND (departamentoParam IS NULL OR u.departamento = departamentoParam)
     AND (provinciaParam IS NULL OR u.provincia = provinciaParam);
 END 
-//DELIMITER ;
 
-
--- Este procedimiento obtiene la información de un usuario según su ID
-DELIMITER //
 
 CREATE PROCEDURE GetUserByCorreo(IN correo_param VARCHAR(255))
 BEGIN
