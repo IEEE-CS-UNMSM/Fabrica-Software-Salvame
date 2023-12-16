@@ -1,4 +1,5 @@
-import { pool } from "../models/db.config.js";
+
+import { pool } from "../../models/db.config.js";
 import mysql from 'mysql2/promise';
 import jwt from 'jsonwebtoken';
 import dotenv from 'dotenv';

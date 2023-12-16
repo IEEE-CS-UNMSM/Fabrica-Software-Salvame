@@ -9,6 +9,7 @@ import url from 'url';
 
 import register from './routes/register.routes.js';
 import loginRoutes from './routes/login.routes.js';
+import signinRoutes from './routes/user/create.routes.js';
 import alertsRoutes from './routes/api/index.routes.js';
 import informesRouter from './routes/informes.routes.js';
 import authenticateUser from './middleware/authMiddleware.js';
@@ -51,7 +52,7 @@ app.get('/', (req, res) => {
 // ...
 
 app.use('/login', loginRoutes); // Aplicar solo a rutas bajo /login
-
+app.use('/signin', signinRoutes);
 app.use('/informes', informesRouter);
 app.use('/api', alertsRoutes);
 
@@ -65,8 +66,6 @@ app.get('/:userId/mis-alertas',authenticateUser, (req, res) => {
     const misAlertasPath = path.resolve(__dirname, '../public', 'Sections', 'user', 'mis-alertas.html');
     res.sendFile(misAlertasPath);
 });
-
-app.use(register);
 
 app.use(express.urlencoded({ extended: true }));
 

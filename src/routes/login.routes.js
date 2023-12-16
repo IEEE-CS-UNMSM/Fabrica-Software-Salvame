@@ -1,6 +1,6 @@
 import { pool } from '../models/db.config.js';
 import { Router } from 'express';
-import { login } from '../controllers/login.controller.js';
+import { login } from '../controllers/user/login.controller.js';
 
 const router = Router();
 
