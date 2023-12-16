@@ -1,3 +1,7 @@
+        
+        const url = new URL(window.location.href);
+        const userId = url.pathname.split('/')[1];
+        
         // Generar opciones para los días (1-31)
         var diaSelect = document.getElementById("dia");
         for (var i = 1; i <= 31; i++) {
@@ -32,22 +36,4 @@
         }
 
 
-document.addEventListener('DOMContentLoaded', function() {
-    fetch('/api/alerts')
-        .then(response => response.json())
-        .then(data => {
-            const tableBody = document.getElementById('alertsTable').querySelector('tbody');
-            data.forEach(alert => {
-                const row = document.createElement('tr');
-                row.innerHTML = `
-                    <td>${alert.AlertNumber}</td>
-                    <td>${alert.FechaPublicacion}</td>
-                    <td>${alert.TipoAlerta === 'Revisado' ? '✔️' : ''}</td>
-                    <td>${alert.TipoAlerta === 'Aceptado' ? '✔️' : ''}</td>
-                    <td>${alert.TipoAlerta === 'Rechazado' ? '✔️' : ''}</td>
-                `;
-                tableBody.appendChild(row);
-            });
-        })
-        .catch(error => console.error('Error:', error));
-});
+

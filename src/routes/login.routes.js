@@ -1,9 +1,10 @@
-import {pool} from '../models/db.config.js';
+import { pool } from '../models/db.config.js';
 import { Router } from 'express';
-import {searchUser} from '../controllers/login.controller.js'
+import { login } from '../controllers/login.controller.js';
+
 const router = Router();
 
-router.post('/login', searchUser);
+// Configura la ruta POST para el inicio de sesión en /login
+router.post('/', login);
 
-export default router
-
+export default router;
