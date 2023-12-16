@@ -17,6 +17,9 @@
       href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
       rel="stylesheet"
     />
+
+    
+
   </head>
   <body id="body">
     <header>
@@ -48,6 +51,34 @@
             </tr>
         </thead>
         <tbody>
+          <script>
+            // Function to fetch and populate data
+            async function fetchAlerts() {
+                try {
+                    const response = await fetch('/api/alertas'); // Adjust the URL to match your server route
+                    const data = await response.json();
+                    
+                    const tableBody = document.querySelector('#alertTable tbody');
+        
+                    // Loop through the data and create table rows
+                    data.forEach(alert => {
+                        const row = document.createElement('tr');
+                        row.innerHTML = `
+                            <td>${alert.alertID}</td>
+                            <td>${alert.description}</td>
+                            <!-- Add more table cells for additional data -->
+                        `;
+                        tableBody.appendChild(row);
+                    });
+                } catch (error) {
+                    console.error(error);
+                }
+            }
+        
+            // Call the function when the page loads
+            window.addEventListener('load', fetchAlerts);
+        </script>
+    
             <!-- Las alertas se insertarán aquí -->
         </tbody>
     </table>
@@ -238,38 +269,8 @@
       </form>
     </section>
 
-    <script src="build/js/app.js"></script>
-    <script src="build/js/form.js"></script>
-
-    <script>
-      // Function to fetch and populate data
-      async function fetchAlerts() {
-          try {
-              const response = await fetch('/api/getAlerts'); // Adjust the URL to match your server route
-              const data = await response.json();
-              
-              const tableBody = document.querySelector('#alertTable tbody');
-  
-              // Loop through the data and create table rows
-              data.forEach(alert => {
-                  const row = document.createElement('tr');
-                  row.innerHTML = `
-                      <td>${alert.alertID}</td>
-                      <td>${alert.description}</td>
-                      <!-- Add more table cells for additional data -->
-                  `;
-                  tableBody.appendChild(row);
-              });
-          } catch (error) {
-              console.error(error);
-          }
-      }
-  
-      // Call the function when the page loads
-      window.addEventListener('load', fetchAlerts);
-  </script>
-  
-
+    <script src="../build/js/app.js"></script>
+    <script src="../build/js/form.js"></script>
 
   </body>
 </html>
