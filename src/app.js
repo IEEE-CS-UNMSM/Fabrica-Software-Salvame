@@ -67,6 +67,15 @@ app.get('/:userId/mis-alertas',authenticateUser, (req, res) => {
 });
 
 app.use(register);
+app.use(login);
+
+app.use(express.urlencoded({ extended: true }));
+
+app.use(session({
+    secret: 'secret',
+    resave: true,
+    saveUninitialized: true
+}));
 
 
 app.listen(3000, () => {
