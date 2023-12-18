@@ -7,3 +7,8 @@ export const viewAnimal = async (req, res)=>{
     console.log(result);
     res.send(result);
 }
+
+export const allAnimal = async (req, res) =>{
+    const [result] = await pool.query("select * from animal")
+   res.send(result);
+}
