@@ -7,8 +7,8 @@ import session from 'express-session';
 
 import url from 'url';
 
-import register from './routes/register.routes.js';
 import loginRoutes from './routes/user/login.routes.js';
+import logoutRoutes from './routes/user/logout.routes.js';
 import signinRoutes from './routes/user/create.routes.js';
 import alertsRoutes from './routes/api/index.routes.js';
 import informesRouter from './routes/informes.routes.js';
@@ -49,20 +49,27 @@ app.get('/', (req, res) => {
     res.sendFile(indexPath);
 });
 
-// ...
-
-app.use('/login', loginRoutes); // Aplicar solo a rutas bajo /login
+app.use('/login', loginRoutes);
+app.use('/logout', logoutRoutes);
 app.use('/signin', signinRoutes);
 app.use('/informes', informesRouter);
 app.use('/api', alertsRoutes);
 
-app.get('/:userId/',authenticateUser, (req, res) => {
+app.get('/auth-log', authenticateUser,  (req, res, next) => {
+    const userData = {
+        userId: req.user.userId,
+        nombres: req.user.userNombres
+    }
+    res.send(userData);
+});
+
+app.get('/user/:userId/', authenticateUser, (req, res) => {
     const userId = req.user.userId;
     const userPath = path.resolve(__dirname, '../public', 'Sections', 'user', 'index.html');
     res.sendFile(userPath);
 });
 
-app.get('/:userId/mis-alertas',authenticateUser, (req, res) => {
+app.get('/user/:userId/mis-alertas',authenticateUser, (req, res) => {
     const misAlertasPath = path.resolve(__dirname, '../public', 'Sections', 'user', 'mis-alertas.html');
     res.sendFile(misAlertasPath);
 });

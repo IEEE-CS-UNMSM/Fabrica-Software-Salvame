@@ -4,6 +4,12 @@ html {
   box-sizing: border-box;
 }
 
+
+#linkPerfil{
+  display: none;
+  color: #222;
+}
+
 *,
 *:before,
 *:after {

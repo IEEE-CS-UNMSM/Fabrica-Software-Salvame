@@ -319,3 +319,21 @@ CALL crear_usuario_basico('Rafaela', 'Doeaa', '12345678', 'arafaerl@gmail.com', 
 SELECT * FROM usuario_basico;
 
 SELECT * FROM perfil_usuario;
+
+
+DELIMITER //
+
+CREATE PROCEDURE VisualizarEstadoAlertas(IN p_dni VARCHAR(8))
+BEGIN
+    SELECT 
+        a.idAlerta, 
+        a.horaAlerta, 
+        ha.estatus
+    FROM alerta a
+    INNER JOIN usuario_basico ub ON a.nroDocumento = ub.dni
+    INNER JOIN historial_alerta ha ON a.idHistorialA = ha.idHistorialA
+    WHERE ub.dni = p_dni;
+END //
+
+
+CALL VisualizarEstadoAlertas("77354147");

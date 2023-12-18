@@ -29,10 +29,7 @@ export const login = async (req, res) => {
         const userPayload = {
             userId: userObject.idPerfilUsuario,
             userNombres: userObject.nombres,
-            userApellidos: userObject.apellidos,
-            userCorreo: userObject.correo,
-            userContrasenia: userObject.contraseña,
-            userFN: userObject.fechaNac
+            userApellidos: userObject.apellidos
         };
 
         if (user.contraseña != contrasenia) {
@@ -54,7 +51,7 @@ export const login = async (req, res) => {
             //signed: true
         });
 
-        return res.redirect(`/${userPayload.userId}`);
+        return res.redirect(`/user/${userPayload.userId}`);
 
     } catch (error) {
         console.error(error);
