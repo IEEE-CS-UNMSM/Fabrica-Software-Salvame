@@ -1,4 +1,7 @@
 import express from 'express';
+
+import cors from 'cors';
+
 import cookieParser from 'cookie-parser';
 import morgan from 'morgan';
 import path from 'path';
@@ -15,6 +18,9 @@ import informesRouter from './routes/informes.routes.js';
 import authenticateUser from './middleware/authMiddleware.js';
 
 const app = express();
+
+
+app.use(cors());
 
 app.use(morgan('combined'));
 app.use(express.json());
