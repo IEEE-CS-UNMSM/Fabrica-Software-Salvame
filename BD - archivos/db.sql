@@ -28,6 +28,8 @@ CREATE TABLE usuario_basico (
   FOREIGN KEY (idPerfilUsuario) REFERENCES perfil_usuario(idPerfilUsuario)
 );
 
+SELECT * FROM usuario_basico;
+
 INSERT INTO usuario_basico (nombres, apellidos, dni, correo, contraseña, fechaNac) VALUES
   ('Darwin Karls', 'Mendoza Bermejo', '77354147', 'darw.mendz@gmail.com', '123456', '2000-01-01');
 
@@ -214,7 +216,6 @@ VALUES ('54872369', 78901, 5, '2023-12-11', '2023-12-11 11:55:00', 'Gato', 'Enco
 
 
 
-DELIMITER //
 CREATE PROCEDURE GetNormalAlerts()
 BEGIN
     SELECT
@@ -228,10 +229,6 @@ BEGIN
     WHERE
         ha.tipoAlerta = 'Normal';
 END 
-//DELIMITER ;
-
--- Crear procedimiento almacenado
-DELIMITER //
 
 CREATE PROCEDURE VisualizarInforme(
   IN nombreCientificoParam VARCHAR(30),
@@ -254,4 +251,71 @@ BEGIN
     AND (departamentoParam IS NULL OR u.departamento = departamentoParam)
     AND (provinciaParam IS NULL OR u.provincia = provinciaParam);
 END 
-//DELIMITER ;
+
+
+CREATE PROCEDURE GetUserByCorreo(IN correo_param VARCHAR(255))
+BEGIN
+  SELECT * FROM usuario_basico WHERE correo = correo_param;
+END 
+ 
+
+CREATE PROCEDURE crear_usuario_basico(
+  IN p_nombres VARCHAR(30),
+  IN p_apellidos VARCHAR(30),
+  IN p_correo VARCHAR(50),
+  IN p_contraseña VARCHAR(50),
+  IN p_fechaNac DATE
+)
+BEGIN
+  DECLARE idPerfilUsuario INT;
+  DECLARE random_dni VARCHAR(8);
+
+  -- Variable para controlar el manejo de errores
+  DECLARE CONTINUE HANDLER FOR SQLEXCEPTION
+  BEGIN
+    -- Rollback en caso de error
+    ROLLBACK;
+  END;
+
+  -- Iniciar transacción
+  START TRANSACTION;
+
+  -- Truncar el UUID a 8 caracteres
+  SELECT SUBSTRING(UUID(), 1, 8) INTO random_dni;
+
+  -- Verificar si el correo ya existe
+  SELECT idPerfilUsuario INTO idPerfilUsuario FROM usuario_basico WHERE correo = p_correo LIMIT 1;
+  IF idPerfilUsuario IS NOT NULL THEN
+    SIGNAL SQLSTATE '45000'
+      SET MESSAGE_TEXT = 'Error: El correo ya está registrado.';
+  END IF;
+
+  -- Verificar si el nombre y apellido ya existen
+  SELECT idPerfilUsuario INTO idPerfilUsuario FROM usuario_basico WHERE nombres = p_nombres AND apellidos = p_apellidos LIMIT 1;
+  IF idPerfilUsuario IS NOT NULL THEN
+    SIGNAL SQLSTATE '45000'
+      SET MESSAGE_TEXT = 'Error: El nombre y apellido ya están registrados.';
+  END IF;
+
+  -- Insertar en la tabla perfil_usuario
+  INSERT INTO perfil_usuario (rol) VALUES ('Basico');
+  SET idPerfilUsuario = LAST_INSERT_ID();
+
+  -- Insertar en la tabla usuario_basico
+  INSERT INTO usuario_basico (idPerfilUsuario, nombres, apellidos, dni, correo, contraseña, fechaNac)
+  VALUES (idPerfilUsuario, p_nombres, p_apellidos, random_dni, p_correo, p_contraseña, p_fechaNac);
+
+  -- Commit en caso de éxito
+  COMMIT;
+
+END;
+
+
+
+
+CALL crear_usuario_basico('Rafaela', 'Doeaa', '12345678', 'arafaerl@gmail.com', '1990-01-01');
+
+
+SELECT * FROM usuario_basico;
+
+SELECT * FROM perfil_usuario;
