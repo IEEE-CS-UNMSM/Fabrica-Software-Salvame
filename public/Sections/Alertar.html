@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sálvame</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Forum&family=Megrim&family=Poppins:wght@400;600&family=Readex+Pro&display=swap"
+      rel="stylesheet"
+    />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="../build/css/normalize.css" />
+    <link rel="stylesheet" href="../build/css/Alertar.css" />
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+
+    <style>
+      .secuencia {
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+        position: relative;
+      }
+
+      .secuencia div div {
+        margin: 10px;
+        padding: 20px;
+        background-color: #C4FBA3;
+        position: relative;
+      }
+
+      .secuencia div {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin: 0;
+      }
+
+      .secuencia div:not(:last-child) > div::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 100%;
+        margin-top: -1px;
+        width: 60px;
+        height: 2px;
+        background-color: #C4FBA3;
+      }
+
+
+
+
+
+
+
+
+
+
+#active{
+    background-color: #5BDA59;
+}
+.subir-img {
+            text-align: center;
+            margin-top: 20px;
+            width: 600px;
+            margin: 0 auto;
+            height: 400px;
+            background-image: url(../src/img/pattern\ 4.png);
+            border: 1px solid rgb(71, 71, 71);
+            border-radius: 8px;
+            background-color: rgb(156, 149, 149);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            
+  
+        }
+
+
+        #preview {
+    width: 600px;
+    height: 400px;
+    object-fit: contain; /* Esto asegura que la imagen mantenga su relación de aspecto */
+    border: 1px solid rgb(71, 71, 71);
+    border-radius: 8px;
+    background-color: rgb(156, 149, 149);
+    
+
+}
+
+        #custom-upload-button {
+            cursor: pointer;
+            padding: 10px;
+            background-color: #3498db;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+    </style>
+  </head>
+  <body id="body">
+    <header>
+      <div class="container">
+        <nav class="nav-bar">
+          <a href="index.html"><img src="../src/img/logo.png" alt="logo" /></a>
+          <div class="nav-bar_botones">
+            <button id="btnSignUp">Cerrar Sesión</button>
+          </div>
+        </nav>
+      </div>
+    </header>
+    <main>
+        <div class="secuencia">
+            <div class="intermedio">
+                <div id="active">
+                    <h2>1</h2>
+                </div>
+                <p>Evidencia</p>
+            </div>
+        
+            <div class="intermedio">
+                <div>
+                    <h2>2</h2>
+                </div>
+                <p>Información</p>
+            </div>
+        
+            <div class="intermedio">
+                <div>
+                    <h2>3</h2>
+                </div>
+                <p>Ubicación</p>
+            </div>
+            <div class="no-line">
+                <div>
+                    <h2>4</h2>
+                </div>
+                <p>Tipo</p>
+            </div>
+        </div>
+        
+        <section class="subir-img">
+            <h1>Suelte el archivo aquí <br>o</h1>
+            
+            <form id="upload-form">
+                <label for="file-input" id="custom-upload-button">Capturar</label>
+                <input type="file" id="file-input" accept="image/*" style="display: none;" />
+            </form>
+    
+            <div id="preview-container" style="display: none;">
+                <img id="preview"  alt="Vista previa de la imagen" />
+            </div>
+    
+            <script>
+                document.addEventListener('DOMContentLoaded', function () {
+                    var fileInput = document.getElementById('file-input');
+                    var previewImage = document.getElementById('preview');
+                    var uploadLabel = document.getElementById('custom-upload-button');
+                    var dropText = document.querySelector('.subir-img h1');
+                    var previewContainer = document.getElementById('preview-container');
+            
+                    fileInput.addEventListener('change', function () {
+                        var file = fileInput.files[0];
+            
+                        if (file) {
+                            var reader = new FileReader();
+            
+                            reader.onload = function (e) {
+                                previewImage.src = e.target.result;
+            
+                                // Ocultar el texto y el botón cuando la imagen se carga
+                                dropText.style.display = 'none';
+                                uploadLabel.style.display = 'none';
+
+                                // Mostrar el contenedor de vista previa
+                                previewContainer.style.display = 'block';
+                            };
+            
+                            reader.readAsDataURL(file);
+                        }
+                    });
+                });
+            </script>
+        </section>
+    </main>
+    <div class="nav-bar_botones vamos-button">
+      <button id="Vamos">Siguiente</button>
+    </div>
+    <footer class="footer">
+      <div class="container footer-content">
+        <div class="contributors">
+          <img src="../src/img/logo.png" alt="logo" />
+          <ul>
+            <li>
+              <p>Benites Pardavé, Eder Gustavo</p>
+            </li>
+            <li>
+              <p>Cueto Salazar, Sebastián Antonio</p>
+            </li>
+            <li>
+              <p>Loli Collantes, Nilton Daniel</p>
+            </li>
+            <li>
+              <p>Mendoza Bermejo, Darwin Karls</p>
+            </li>
+            <li>
+              <p>Pineda Silupu, Kevin Jair</p>
+            </li>
+            <li>
+              <p>Rojas Palacios, Dante Arhon</p>
+            </li>
+          </ul>
+          <div class="social-media-icons">
+            <div class="hover">
+              <a href="">
+                <img src="../src/icons/Group (1).svg" alt="" />
+              </a>
+            </div>
+            <div class="hover">
+              <a href="">
+                <img src="../src/icons/Vector.svg" alt="" />
+              </a>
+            </div>
+            <div class="hover">
+              <a href="">
+                <img src="../src/icons/Group.svg" alt="" />
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="about">
+          <h3>Nosotros</h3>
+          <a href=""><p>¿Por qué suscribirme a Sálvame?</p></a>
+        </div>
+        <div class="information">
+          <h3>Información</h3>
+          <a href=""><p>Ver Alertas</p></a>
+        </div>
+        <div class="join">
+          <h3>Únete</h3>
+          <a href=""><p>Postular a Moderador</p></a>
+        </div>
+      </div>
+    </footer>
+    <section class="sec-login inactive" id="sec-login">
+      <form class="login-container" id="form" type="submit">
+        <div class="item">
+          <p>Sálvame</p>
+          <a href="./index.html">Inicio</a>
+        </div>
+        <div class="itemtwo">
+          <h2>Iniciar sesión</h2>
+          <div class="input-box">
+            <input
+              type="text"
+              placeholder="Correo electrónico"
+              name="correo"
+              required
+            />
+            <i class="bx bx-envelope"></i>
+          </div>
+
+          <div class="input-box">
+            <input
+              type="password"
+              placeholder="Contraseña"
+              name="password"
+              required
+            />
+            <i class="bx bxs-lock-alt"></i>
+          </div>
+
+          <button type="submit" id="ingresar">Ingresar</button>
+        </div>
+      </form>
+    </section>
+
+    <section class="sec-singIn inactive" id="sec-singIn">
+      <form class="singIn-container" id="formSingin">
+        <div class="item">
+          <p>Sálvame</p>
+          <a href="./index.html">Inicio</a>
+        </div>
+        <div class="itemtwo">
+          <h2>Regístrate</h2>
+          <div class="input-box">
+            <input
+              type="text"
+              placeholder="Correo electrónico"
+              name="correo"
+              required
+            />
+            <i class="bx bx-envelope"></i>
+          </div>
+
+          <div class="input-box">
+            <input
+              type="password"
+              placeholder="Contraseña"
+              name="password"
+              required
+            />
+            <i class="bx bxs-lock-alt"></i>
+          </div>
+
+          <div class="input-box">
+            <input
+              type="password"
+              placeholder="Confirmar contraseña"
+              name="confirm_password"
+              required
+            />
+            <i class="bx bxs-lock-alt"></i>
+          </div>
+
+          <div class="input-box">
+            <input
+              type="text"
+              id="nombre"
+              name="nombre"
+              placeholder="Nombre"
+              required
+            />
+            <i class="bx bx-user"></i>
+          </div>
+
+          <div class="input-box">
+            <input
+              type="text"
+              id="apellido"
+              name="apellido"
+              placeholder="Apellido"
+              required
+            />
+            <i class="bx bx-user"></i>
+          </div>
+
+          <div class="date">
+            <select id="dia" name="dia" required>
+              <option value="">día</option>
+            </select>
+
+            <select id="mes" name="mes" required>
+              <option value="">mes</option>
+            </select>
+
+            <select id="ano" name="año" required>
+              <option value="">año</option>
+            </select>
+          </div>
+
+          <div class="condition">
+            <label for=""
+              ><input type="checkbox" required />He leído y acepto los términos
+              y condiciones de "Sálvame"</label
+            >
+          </div>
+          <div class="condition">
+            <label for=""
+              ><input type="checkbox" required />Quiero recibir notificaciones
+              de las alertas e información relevante de la página
+            </label>
+          </div>
+
+          <button type="submit" id="registrarme">Registrarme</button>
+        </div>
+      </form>
+    </section>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script src="build/js/app.js"></script>
+    <script src="build/js/form.js"></script>
+  </body>
+</html>

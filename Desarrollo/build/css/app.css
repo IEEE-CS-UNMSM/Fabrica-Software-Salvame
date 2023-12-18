@@ -159,7 +159,7 @@ a {
   width: 100%;
   max-width: 700px;
   height: 100%;
-  max-height: 600px;
+  max-height: 550px;
   display: flex;
   border-radius: 16px;
   background: #ffffff;
@@ -1048,8 +1048,8 @@ template {
   background-color: #D9D9D9;
   background-repeat: no-repeat;
   background-size: cover;
-  width: 90rem;
-  height: 60rem;
+  width: 127.5rem;
+  height: 83.9rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -1158,6 +1158,7 @@ template {
   border-radius: 1.5rem;
   overflow: hidden;
   box-shadow: 1px 1px 10px 1px rgba(0, 0, 0, 0.25);
+  transition: all 0.3s ease-in-out;
 }
 .card__image {
   width: 100%;
@@ -1166,11 +1167,11 @@ template {
   background-image: url("../../src/img/pattern 8.png");
   padding: 2rem;
 }
-.card__title {
+.card .Familia {
   text-align: left;
   font-size: 2rem;
 }
-.card__lugar {
+.card .Zona {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -1179,6 +1180,12 @@ template {
 .card__fecha {
   text-align: right;
   color: #787878;
+}
+
+.filter {
+  visibility: hidden;
+  opacity: 0;
+  order: 1;
 }
 
 /*# sourceMappingURL=app.css.map */

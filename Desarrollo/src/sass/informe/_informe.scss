@@ -75,10 +75,11 @@
 
 .card {
     // height: 17rem;
-   
+
     border-radius: 1.5rem;
     overflow: hidden;
     box-shadow: 1px 1px 10px 1px rgba(0, 0, 0, 0.25);
+    transition: all 0.3s ease-in-out;
 
     &__image {
         width: 100%;
@@ -89,12 +90,12 @@
         padding: 2rem;
     }
 
-    &__title {
+    .Familia {
         text-align: left;
         font-size: 2rem;
     }
 
-    &__lugar {
+    .Zona {
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -105,4 +106,10 @@
         text-align: right;
         color: #787878;
     }
+}
+
+.filter {
+    visibility: hidden;
+    opacity: 0;
+    order: 1;
 }
