@@ -15,188 +15,13 @@
     <link rel="stylesheet" href="../build/css/normalize.css" />
     <link rel="stylesheet" href="../build/css/Alertar.css" />
     <link rel="stylesheet" href="../build/css/app.css">
+    <link rel="stylesheet" href="../build/css/AlertaNologin.css">
     <link
       href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
       rel="stylesheet"
     />
 
-    <style>
-        
-      .secuencia {
-        display: flex;
-        justify-content: center;
-        gap: 30px;
-        position: relative;
-      }
 
-      .secuencia div div {
-        margin: 10px;
-        padding: 20px;
-        background-color: #C4FBA3;
-        position: relative;
-        cursor: pointer;
-      }
-
-      .secuencia div {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        margin: 0;
-      }
-
-      .secuencia div:not(:last-child) > div::after {
-        content: "";
-        position: absolute;
-        top: 50%;
-        left: 100%;
-        margin-top: -1px;
-        width: 60px;
-        height: 2px;
-        background-color: #C4FBA3;
-      }
-
-
-
-
-
-
-
-
-
-
-#active{
-    background-color: #5BDA59;
-}
-.subir-img {
-            text-align: center;
-            margin-top: 20px;
-            width: 600px;
-            margin: 0 auto;
-            height: 400px;
-            background-image: url(../src/img/pattern\ 4.png);
-            border: 1px solid rgb(71, 71, 71);
-            border-radius: 8px;
-            background-color: rgb(156, 149, 149);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            
-  
-        }
-
-
-        #preview {
-    width: 600px;
-    height: 400px;
-    object-fit: contain; /* Esto asegura que la imagen mantenga su relación de aspecto */
-    border: 1px solid rgb(71, 71, 71);
-    border-radius: 8px;
-    background-color: rgb(156, 149, 149);
-    
-
-}
-
-        #custom-upload-button {
-            cursor: pointer;
-            padding: 10px;
-            background-color: #3498db;
-            color: #fff;
-            border: none;
-            border-radius: 5px;
-            font-size: 16px;
-        }
-
-        /*items2 */
-        .form-container {
-            text-align: center;
-            margin-top: 20px;
-            width: 600px;
-            margin: 0 auto;
-            height: 400px;
-            background-image: url(../src/img/pattern\ 4.png);
-            border: 1px solid rgb(71, 71, 71);
-            border-radius: 8px;
-            background-color: rgb(156, 149, 149);
-            display: grid;
-            grid-template-columns: 1fr auto;
-        }
-        .form-description{
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 100%;
-            gap: 20px;
-
-
-        }
-
-        .form-description input{
-            margin-bottom: 20px;
-            width: 70%;
-            padding: 10px;
-            border-radius: 20px;
-            background-color: #e2e2e4; 
-            font-size: 15px;
-           
-        }
-        textarea{
-            width: 100%;
-            min-height: 200px;
-            background-color: #e2e2e4;
-            resize: none;
-        }
-        .select{
-            margin-top: 10px;
-            margin-bottom: 10px;
-            position: absolute;
-            right: 50%;
-            padding: 10px;
-            border-radius: 20px;
-            background-color: #e2e2e4; 
-            font-size: 15px;
-        }
-        .main-item2{
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
-
-.input-box {
-    position: relative;
-    margin-bottom: 20px; 
-}
-
-.input-box input {
-    width: 100%; 
-    padding-right: 30px;
-    box-sizing: border-box; 
-    border-radius: 20px;
-    background-color: #e2e2e4;
-    font-size: 15px;
-}
-
-.input-box i {
-    position: absolute;
-    top: 45%;
-    right: 10px;
-    font-size: 20px;
-    transform: translateY(-50%);
-    cursor: pointer;
-    color:#FFFFB5;
-}
-#inactive{
-    display: none;
-}
-#content1{
-    display: block!important;
-}
-
-
-
-    </style>
   </head>
   <body id="body">
     <header>
@@ -204,7 +29,7 @@
         <nav class="nav-bar">
           <a href="index.html"><img src="../src/img/logo.png" alt="logo" /></a>
           <div class="nav-bar_botones">
-            <button id="btnSignUp">Cerrar Sesión</button>
+            <button id="btnSignUp">Iniciar Sesión</button>
           </div>
         </nav>
       </div>
@@ -255,39 +80,6 @@
                     <div id="preview-container" style="display: none;">
                         <img id="preview"  alt="Vista previa de la imagen" />
                     </div>
-        
-        
-            
-                    <script>
-                        document.addEventListener('DOMContentLoaded', function () {
-                            var fileInput = document.getElementById('file-input');
-                            var previewImage = document.getElementById('preview');
-                            var uploadLabel = document.getElementById('custom-upload-button');
-                            var dropText = document.querySelector('.subir-img h1');
-                            var previewContainer = document.getElementById('preview-container');
-                    
-                            fileInput.addEventListener('change', function () {
-                                var file = fileInput.files[0];
-                    
-                                if (file) {
-                                    var reader = new FileReader();
-                    
-                                    reader.onload = function (e) {
-                                        previewImage.src = e.target.result;
-                    
-                                        // Ocultar el texto y el botón cuando la imagen se carga
-                                        dropText.style.display = 'none';
-                                        uploadLabel.style.display = 'none';
-        
-                                        // Mostrar el contenedor de vista previa
-                                        previewContainer.style.display = 'block';
-                                    };
-                    
-                                    reader.readAsDataURL(file);
-                                }
-                            });
-                        });
-                    </script>
                 </section>
             </section>
     
@@ -442,14 +234,14 @@
         </div>
       </div>
     </footer>
-    <section class="sec-login inactive" id="sec-login">
-      <form class="login-container" id="form" type="submit">
+    <section class="sec-singIn inactive " id="datos-local">
+      <form class="singIn-container" id="formSingin">
         <div class="item">
           <p>Sálvame</p>
-          <a href="./index.html">Inicio</a>
+          <button id="extranjero">Soy extranjero</button>
         </div>
         <div class="itemtwo">
-          <h2>Iniciar sesión</h2>
+          <h2>Datos personales</h2>
           <div class="input-box">
             <input
               type="text"
@@ -462,27 +254,49 @@
 
           <div class="input-box">
             <input
-              type="password"
-              placeholder="Contraseña"
-              name="password"
+              type="text"
+              placeholder="Tipo de documento"
+              name="tipo-documento"
               required
             />
             <i class="bx bxs-lock-alt"></i>
           </div>
 
-          <button type="submit" id="ingresar">Ingresar</button>
+          <div class="input-box">
+            <input
+              type="number"
+              placeholder="Número de documento"
+              name="numero-documento"
+              required
+            />
+            <i class="bx bxs-lock-alt"></i>
+          </div>
+
+
+          <div class="condition">
+            <label for=""
+              ><input type="checkbox" required />He leído y acepto los términos
+              y condiciones de "Sálvame"</label
+            >
+          </div>
+          <div class="condition">
+            <label for=""
+              ><input type="checkbox" required />Quiero recibir notificaciones
+              de las alertas e información relevante de la página
+            </label>
+          </div>
+          <button type="submit" id="ingresar">Añadir</button>
         </div>
       </form>
     </section>
 
-    <section class="sec-singIn inactive" id="sec-singIn">
+    <section class="sec-singIn  inactive" id="datos-extranjero">
       <form class="singIn-container" id="formSingin">
         <div class="item">
           <p>Sálvame</p>
-          <a href="./index.html">Inicio</a>
         </div>
         <div class="itemtwo">
-          <h2>Regístrate</h2>
+          <h2>Datos personales</h2>
           <div class="input-box">
             <input
               type="text"
@@ -495,9 +309,9 @@
 
           <div class="input-box">
             <input
-              type="password"
-              placeholder="Contraseña"
-              name="password"
+              type="text"
+              placeholder="Tipo de documento"
+              name="tipo-documento"
               required
             />
             <i class="bx bxs-lock-alt"></i>
@@ -505,9 +319,9 @@
 
           <div class="input-box">
             <input
-              type="password"
-              placeholder="Confirmar contraseña"
-              name="confirm_password"
+              type="number"
+              placeholder="Digitar número de documento"
+              name="número-documento"
               required
             />
             <i class="bx bxs-lock-alt"></i>
@@ -534,21 +348,6 @@
             />
             <i class="bx bx-user"></i>
           </div>
-
-          <div class="date">
-            <select id="dia" name="dia" required>
-              <option value="">día</option>
-            </select>
-
-            <select id="mes" name="mes" required>
-              <option value="">mes</option>
-            </select>
-
-            <select id="ano" name="año" required>
-              <option value="">año</option>
-            </select>
-          </div>
-
           <div class="condition">
             <label for=""
               ><input type="checkbox" required />He leído y acepto los términos
@@ -561,8 +360,7 @@
               de las alertas e información relevante de la página
             </label>
           </div>
-
-          <button type="submit" id="registrarme">Registrarme</button>
+          <button type="submit" id="ingresar">Añadir</button>
         </div>
       </form>
     </section>
@@ -573,68 +371,9 @@
       defer
     ></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-    <script src="build/js/app.js"></script>
-    <script src="build/js/form.js"></script>
-    <script>
-document.addEventListener('DOMContentLoaded', function () {
-  // Inicializar el estado
-  let pasoActual = 1;
-  mostrarPaso(pasoActual);
-});
-
-function siguientePaso() {
-  // Obtener el siguiente paso
-  let pasoActual = obtenerPasoActual();
-  let siguientePaso = pasoActual + 1;
-
-  // Mostrar el siguiente paso
-  mostrarPaso(siguientePaso);
-}
-
-function obtenerPasoActual() {
-  // Encontrar el elemento activo
-  let elementos = document.querySelectorAll('.intermedio');
-  for (let i = 0; i < elementos.length; i++) {
-    if (elementos[i].querySelector('div').id === 'active') {
-      return i + 1;
-    }
-  }
-  return 1; // Si no se encuentra, regresar al primer paso por defecto
-}
-
-function mostrarPaso(paso) {
-  // Ocultar todos los pasos
-  let elementos = document.querySelectorAll('.intermedio');
-  elementos.forEach(elemento => {
-    elemento.querySelector('div').id = '';
-  });
-
-  // Mostrar el paso actual
-  elementos[paso - 1].querySelector('div').id = 'active';
-  
-  // Ocultar todos los contenidos
-  let secciones = document.querySelectorAll('.content1, .content2, .content3, .content4');
-  secciones.forEach(seccion => {
-    seccion.style.display = 'none';
-  });
-
-  // Mostrar la sección correspondiente al paso
-  if (paso <= secciones.length) {
-    secciones[paso].style.display = 'block';
-  }
-
-  // Mostrar u ocultar botones según el paso
-  if (paso === 4) {
-    document.getElementById('Vamos').style.display = 'none';
-    document.getElementById('ENVIAR').style.display = 'block';
-  } else {
-    document.getElementById('Vamos').style.display = 'block';
-    document.getElementById('ENVIAR').style.display = 'none';
-  }
-}
-
-// Mostrar por defecto el contenido1 al cargar la página
-mostrarPaso(1);
-      </script>
+    <script src="../build/js/app.js"></script>
+    <script src="../build/js/form.js"></script>
+    <script src="../build/js/AlertaNologin.js"></script>
+   
   </body>
 </html>
