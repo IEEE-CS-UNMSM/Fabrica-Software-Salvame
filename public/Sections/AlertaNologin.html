@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sálvame</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Forum&family=Megrim&family=Poppins:wght@400;600&family=Readex+Pro&display=swap"
+      rel="stylesheet"
+    />
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="../build/css/normalize.css" />
+    <link rel="stylesheet" href="../build/css/Alertar.css" />
+    <link rel="stylesheet" href="../build/css/app.css">
+    <link rel="stylesheet" href="../build/css/AlertaNologin.css">
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+
+
+  </head>
+  <body id="body">
+    <header>
+      <div class="container">
+        <nav class="nav-bar">
+          <a href="index.html"><img src="../src/img/logo.png" alt="logo" /></a>
+          <div class="nav-bar_botones">
+            <button id="btnSignUp">Iniciar Sesión</button>
+          </div>
+        </nav>
+      </div>
+    </header>
+    <main>
+        <div class="secuencia">
+            <div class="intermedio" id="item1" onclick="mostrarPaso(1)">
+                <div id="active">
+                    <h2>1</h2>
+                </div>
+                <p>Evidencia</p>
+            </div>
+            
+            <div class="intermedio" id="item2" onclick="mostrarPaso(2)">
+                <div>
+                    <h2>2</h2>
+                </div>
+                <p>Información</p>
+            </div>
+            
+            <div class="intermedio" id="item3" onclick="mostrarPaso(3)">
+                <div>
+                    <h2>3</h2>
+                </div>
+                <p>Ubicación</p>
+            </div>
+            
+            <div class="intermedio" id="item4" onclick="mostrarPaso(4)">
+                <div>
+                    <h2>4</h2>
+                </div>
+                <p>Tipo</p>
+            </div>
+            
+        </div>
+        <form action="" method="post">
+            <section class="content1" id="content1" >
+
+            
+                <section class="subir-img content1">
+                    <h1>Suelte el archivo aquí <br>o</h1>
+                    
+                    <form id="upload-form">
+                        <label for="file-input" id="custom-upload-button">Capturar</label>
+                        <input type="file" id="file-input" accept="image/*" style="display: none;" />
+                    </form>
+            
+                    <div id="preview-container" style="display: none;">
+                        <img id="preview"  alt="Vista previa de la imagen" />
+                    </div>
+                </section>
+            </section>
+    
+            
+            <section class="content2" >
+    
+                </div>
+                <select class="select" name="categorias" id="categorias">
+                    <option value="" selected disabled hidden>Seleccione una categoría</option>
+                    <option value="1">Aves (Loro, guacamayo, otros)</option>
+                    <option value="2">Mamiferos (Mono, puma, otros)</option>
+                    <option value="3">Reptiles (Tortuga, lagartija, otros)</option>
+                    <option value="4">Invertebrados (Mariposa, otros)</option>
+                    <option value="5">Anfibios (Sapos, ranas, otros)</option>
+                    <option value="6">Caza Furtiva (Vicuña y guanaco)</option>
+                    <option value="7">Animales Domésticos (Perros, otros)</option>
+                </select>
+        
+                <section class="form-container">
+                    <form class="form-description" action="submit">
+                        <div>
+                            <div class="input-box">
+                                <label  for="descrip-animal"></label>
+                                <input placeholder="Describir el animal afectado" name="descrip-animal" id="descrip-animal" type="text">
+                                <i class='bx bxs-edit'></i>   
+                            </div>
+        
+                            <textarea name="descrip-animal-text" id="descrip-animal-text" cols="30" rows="10"></textarea>
+                        </div>
+        
+                        <div>
+                            <div class="input-box">
+                                <label for="descrip-hechos"></label>
+                                <input placeholder="Describir los hechos" name="descrip-hechos" id="descrip-hechos" type="text">
+                                <i class='bx bxs-edit'></i>
+                            </div>
+        
+                            <textarea name="descrip-hechos-text" id="descrip-hechos-text" cols="30" rows="10"></textarea>
+                        </div>
+        
+        
+        
+                    </form>
+                </section>
+                
+            </section>
+            <section class="content3 " >
+    
+                <div class="container main-map">
+                    <div class="welcome-alert">
+                        <h2>¡Bienvenido al módulo de alerta!</h2>
+                      </div>
+                
+                      <section class="map-section">
+                        <div id="map"></div>
+                        <div class="mostrar-ubicacion">
+                          <div class="mostrar-ubicacion__titulo">
+                            <h3>Ubicación</h3>
+                            <p class="lat"></p>
+                            <p class="lng"></p>
+                          </div>
+                          <div class="mostrar-ubicacion__capturar">
+                            <button class="btn-capturar">+</button>
+                            <p>CAPTURAR</p>
+                          </div>
+                          <div class="mostrar-ubicacion__distancia">
+                            <h3>Distancia</h3>
+                            <p>0km</p>
+                          </div>
+                        </div>
+                </div>
+    
+            </section>
+            <section class="content4">
+                <section class="tipo-section">
+                    <div class="container tipo">
+                        <div>
+                            <p>Le gustaría que su alerta sea:</p>
+                            <div class="contenedor-botone-tipo">
+                                <button>Anónima</button>
+                                <button>Pública</button>
+                            </div>
+                        </div>
+                    </div>
+                  </section>
+            </section>
+            <div class="nav-bar_botones vamos-button">
+                <button id="Vamos" onclick="siguientePaso()">Siguiente</button>
+            </div>
+            <div class="nav-bar_botones vamos-button">
+                <button id="ENVIAR" itype="submit" style="display: none;">Enviar</button>
+            </div>
+
+        </form>
+
+
+    </main>
+
+    <footer class="footer">
+      <div class="container footer-content">
+        <div class="contributors">
+          <img src="../src/img/logo.png" alt="logo" />
+          <ul>
+            <li>
+              <p>Benites Pardavé, Eder Gustavo</p>
+            </li>
+            <li>
+              <p>Cueto Salazar, Sebastián Antonio</p>
+            </li>
+            <li>
+              <p>Loli Collantes, Nilton Daniel</p>
+            </li>
+            <li>
+              <p>Mendoza Bermejo, Darwin Karls</p>
+            </li>
+            <li>
+              <p>Pineda Silupu, Kevin Jair</p>
+            </li>
+            <li>
+              <p>Rojas Palacios, Dante Arhon</p>
+            </li>
+          </ul>
+          <div class="social-media-icons">
+            <div class="hover">
+              <a href="">
+                <img src="../src/icons/Group (1).svg" alt="" />
+              </a>
+            </div>
+            <div class="hover">
+              <a href="">
+                <img src="../src/icons/Vector.svg" alt="" />
+              </a>
+            </div>
+            <div class="hover">
+              <a href="">
+                <img src="../src/icons/Group.svg" alt="" />
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="about">
+          <h3>Nosotros</h3>
+          <a href=""><p>¿Por qué suscribirme a Sálvame?</p></a>
+        </div>
+        <div class="information">
+          <h3>Información</h3>
+          <a href=""><p>Ver Alertas</p></a>
+        </div>
+        <div class="join">
+          <h3>Únete</h3>
+          <a href=""><p>Postular a Moderador</p></a>
+        </div>
+      </div>
+    </footer>
+    <section class="sec-singIn inactive " id="datos-local">
+      <form class="singIn-container" id="formSingin">
+        <div class="item">
+          <p>Sálvame</p>
+          <button id="extranjero">Soy extranjero</button>
+        </div>
+        <div class="itemtwo">
+          <h2>Datos personales</h2>
+          <div class="input-box">
+            <input
+              type="text"
+              placeholder="Correo electrónico"
+              name="correo"
+              required
+            />
+            <i class="bx bx-envelope"></i>
+          </div>
+
+          <div class="input-box">
+            <input
+              type="text"
+              placeholder="Tipo de documento"
+              name="tipo-documento"
+              required
+            />
+            <i class="bx bxs-lock-alt"></i>
+          </div>
+
+          <div class="input-box">
+            <input
+              type="number"
+              placeholder="Número de documento"
+              name="numero-documento"
+              required
+            />
+            <i class="bx bxs-lock-alt"></i>
+          </div>
+
+
+          <div class="condition">
+            <label for=""
+              ><input type="checkbox" required />He leído y acepto los términos
+              y condiciones de "Sálvame"</label
+            >
+          </div>
+          <div class="condition">
+            <label for=""
+              ><input type="checkbox" required />Quiero recibir notificaciones
+              de las alertas e información relevante de la página
+            </label>
+          </div>
+          <button type="submit" id="ingresar">Añadir</button>
+        </div>
+      </form>
+    </section>
+
+    <section class="sec-singIn  inactive" id="datos-extranjero">
+      <form class="singIn-container" id="formSingin">
+        <div class="item">
+          <p>Sálvame</p>
+        </div>
+        <div class="itemtwo">
+          <h2>Datos personales</h2>
+          <div class="input-box">
+            <input
+              type="text"
+              placeholder="Correo electrónico"
+              name="correo"
+              required
+            />
+            <i class="bx bx-envelope"></i>
+          </div>
+
+          <div class="input-box">
+            <input
+              type="text"
+              placeholder="Tipo de documento"
+              name="tipo-documento"
+              required
+            />
+            <i class="bx bxs-lock-alt"></i>
+          </div>
+
+          <div class="input-box">
+            <input
+              type="number"
+              placeholder="Digitar número de documento"
+              name="número-documento"
+              required
+            />
+            <i class="bx bxs-lock-alt"></i>
+          </div>
+
+          <div class="input-box">
+            <input
+              type="text"
+              id="nombre"
+              name="nombre"
+              placeholder="Nombre"
+              required
+            />
+            <i class="bx bx-user"></i>
+          </div>
+
+          <div class="input-box">
+            <input
+              type="text"
+              id="apellido"
+              name="apellido"
+              placeholder="Apellido"
+              required
+            />
+            <i class="bx bx-user"></i>
+          </div>
+          <div class="condition">
+            <label for=""
+              ><input type="checkbox" required />He leído y acepto los términos
+              y condiciones de "Sálvame"</label
+            >
+          </div>
+          <div class="condition">
+            <label for=""
+              ><input type="checkbox" required />Quiero recibir notificaciones
+              de las alertas e información relevante de la página
+            </label>
+          </div>
+          <button type="submit" id="ingresar">Añadir</button>
+        </div>
+      </form>
+    </section>
+    <script src="../build/js/map.js"></script>
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBDaeWicvigtP9xPv919E-RNoxfvC-Hqik&libraries=geometry&callback=iniciarMap"
+      async
+      defer
+    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script src="../build/js/app.js"></script>
+    <script src="../build/js/form.js"></script>
+    <script src="../build/js/AlertaNologin.js"></script>
+   
+  </body>
+</html>
