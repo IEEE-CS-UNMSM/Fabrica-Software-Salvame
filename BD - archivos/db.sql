@@ -259,7 +259,9 @@ BEGIN
 END 
  
 
-CREATE PROCEDURE crear_usuario_basico(
+-- Active: 1702518248695@@127.0.0.1@3306@proyecto_salvame
+DROP PROCEDURE crear_usuario_basico;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `crear_usuario_basico`(
   IN p_nombres VARCHAR(30),
   IN p_apellidos VARCHAR(30),
   IN p_correo VARCHAR(50),
@@ -267,14 +269,17 @@ CREATE PROCEDURE crear_usuario_basico(
   IN p_fechaNac DATE
 )
 BEGIN
-  DECLARE idPerfilUsuario INT;
+  DECLARE idPerfilUsuario INT DEFAULT NULL;
   DECLARE random_dni VARCHAR(8);
-
+  DECLARE existCorreo INT DEFAULT 0;
+  DECLARE existNombreApellido INT DEFAULT 0;
+  
   -- Variable para controlar el manejo de errores
-  DECLARE CONTINUE HANDLER FOR SQLEXCEPTION
+  DECLARE EXIT HANDLER FOR SQLEXCEPTION
   BEGIN
     -- Rollback en caso de error
     ROLLBACK;
+    RESIGNAL; -- Re-lanza el error capturado
   END;
 
   -- Iniciar transacción
@@ -284,15 +289,15 @@ BEGIN
   SELECT SUBSTRING(UUID(), 1, 8) INTO random_dni;
 
   -- Verificar si el correo ya existe
-  SELECT idPerfilUsuario INTO idPerfilUsuario FROM usuario_basico WHERE correo = p_correo LIMIT 1;
-  IF idPerfilUsuario IS NOT NULL THEN
+  SELECT COUNT(*) INTO existCorreo FROM usuario_basico WHERE correo = p_correo;
+  IF existCorreo > 0 THEN
     SIGNAL SQLSTATE '45000'
       SET MESSAGE_TEXT = 'Error: El correo ya está registrado.';
   END IF;
 
   -- Verificar si el nombre y apellido ya existen
-  SELECT idPerfilUsuario INTO idPerfilUsuario FROM usuario_basico WHERE nombres = p_nombres AND apellidos = p_apellidos LIMIT 1;
-  IF idPerfilUsuario IS NOT NULL THEN
+  SELECT COUNT(*) INTO existNombreApellido FROM usuario_basico WHERE nombres = p_nombres AND apellidos = p_apellidos;
+  IF existNombreApellido > 0 THEN
     SIGNAL SQLSTATE '45000'
       SET MESSAGE_TEXT = 'Error: El nombre y apellido ya están registrados.';
   END IF;
@@ -308,12 +313,12 @@ BEGIN
   -- Commit en caso de éxito
   COMMIT;
 
-END;
+END
 
 
 
 
-CALL crear_usuario_basico('Rafaela', 'Doeaa', '12345678', 'arafaerl@gmail.com', '1990-01-01');
+CALL crear_usuario_basico('Rafaelam', 'Doeaama', 'aradfaerla@gmail.com', '12345676', '1990-01-01');
 
 
 SELECT * FROM usuario_basico;
@@ -337,3 +342,7 @@ END //
 
 
 CALL VisualizarEstadoAlertas("77354147");
+
+SELECT * FROM animal;
+
+select * from alerta;
