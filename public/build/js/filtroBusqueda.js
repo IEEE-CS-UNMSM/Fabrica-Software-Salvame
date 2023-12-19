@@ -1,14 +1,19 @@
 function filtroBusqueda(input, selector, selectElement) {
     const d = document;
 
+    // Función para eliminar tildes
+    function quitarTildes(text) {
+        return text.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+    }
+
     d.addEventListener('keyup', (e) => {
         e.preventDefault();
         if (e.target.matches(input)) {
-            const searchText = e.target.value.toLowerCase();
+            const searchText = quitarTildes(e.target.value.toLowerCase());
 
             d.querySelectorAll(selector).forEach((el) => {
                 const cardContent = el.querySelector('.card__content');
-                const textContent = cardContent.textContent.toLowerCase();
+                const textContent = quitarTildes(cardContent.textContent.toLowerCase());
 
                 textContent.includes(searchText)
                     ? el.classList.remove('filter')
@@ -17,6 +22,7 @@ function filtroBusqueda(input, selector, selectElement) {
         }
     });
 }
+
 
 const selectElement = document.querySelector('.form__select');
 filtroBusqueda('#filtroNombre', '.card', selectElement);
@@ -41,7 +47,7 @@ document.addEventListener('DOMContentLoaded', function () {
             const bValue = b.querySelector(`.${sortBy}`).textContent.toLowerCase();
             console.log(aValue.localeCompare(bValue));
             return aValue.localeCompare(bValue);
-            
+
         });
 
         while (cardsContainer.firstChild) {
@@ -53,4 +59,3 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 });
-

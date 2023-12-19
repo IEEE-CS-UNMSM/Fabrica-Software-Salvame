@@ -18,12 +18,6 @@ fetch(apiUrl)
             let card = document.createElement('div');
             card.classList.add('card');
 
-            let image = document.createElement('img');
-            image.classList.add('card__image');
-            image.setAttribute('src', '../src/img/reptiles.png'); // Cómo hago para las imagenes xD
-            image.setAttribute('alt', 'reptiles');
-            card.appendChild(image);
-
             let content = document.createElement('div');
             content.classList.add('card__content');
 
@@ -31,6 +25,12 @@ fetch(apiUrl)
             family.classList.add('Familia');
             family.textContent = animal.especie;
             content.appendChild(family);
+
+            let image = document.createElement('img');
+            image.classList.add('card__image');
+            image.setAttribute('src', `../src/img/${animal.especie.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "")}.webp`);
+            image.setAttribute('alt', `${animal.especie}`);
+            card.appendChild(image);
 
             let lugar = document.createElement('div');
             lugar.classList.add('card__lugar');
