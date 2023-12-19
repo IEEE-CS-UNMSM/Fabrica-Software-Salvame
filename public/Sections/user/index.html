@@ -16,14 +16,15 @@
       href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
       rel="stylesheet"
     />
+    <script src="../../build/js/user.js"></script>
   </head>
   <body id="body">
     <header>
       <div class="container">
         <nav class="nav-bar">
-          <a href="index.html"><img src="../../src/img/logo.png" alt="logo" /></a>
+          <a href="../"><img src="../../src/img/logo.png" alt="logo" /></a>
           <div class="nav-bar_botones">
-            <button id="btnSignUp">Cerrar Sesión</button>
+            <a href="/logout"><button id="btnSignOut">Cerrar Sesión</button></a>
           </div>
         </nav>
       </div>
@@ -31,19 +32,18 @@
     <main>
       <section class="container oso">
         <div class="oso-text-sesion">
-          <h1>Sálvame</h1>
-          <h2>
-            ¡Hola! <br> USUARIO
-          </h2>
+            <h1>Sálvame</h1>
+            <h2 id="userNames">¡Hola! Bienvenido.</h2>
         </div>
         <div class="oso-img">
-          <img src="../../src/img/main.png" alt="main" />
-          <img class="pin1" src="../../src/img/1.png" />
-          <img class="pin2" src="../../src/img/2.png" />
-          <img class="pin3" src="../../src/img/3.png" />
-          <img class="pin4" src="../../src/img/4.png" />
+            <img src="../../src/img/main.png" alt="main" />
+            <img class="pin1" src="../../src/img/1.png" />
+            <img class="pin2" src="../../src/img/2.png" />
+            <img class="pin3" src="../../src/img/3.png" />
+            <img class="pin4" src="../../src/img/4.png" />
         </div>
-      </section>
+    </section>
+    
       <section class="container options">
         <div>
           <img src="../../src/img/Group 15.png" alt="">
@@ -51,13 +51,13 @@
         <div class="container-options">
           <div>
             <div >
-              <a href="../Alerta.html" class="container-links">
+              <a href="/crear-alerta" class="container-links">
                 <img src="../../src/icons/relizar-alerta.png" alt="relizar alerta" />
                 <p>Realizar Alerta</p>
               </a>
             </div>
             <div>
-              <a href="../verAlerta.html" class="container-links">
+              <a href="/ver-alertas" class="container-links">
                 <img src="../../src/icons/ver-alerta.png" alt="ver alerta" />
                 <p>Ver Alertas</p>
               </a>
@@ -65,18 +65,18 @@
           </div>
           <div>
             <div>
-              <a href="../../../Desarrollo/informes.html" class="container-links">
+              <a href="/ver-informe" class="container-links">
                 <img src="../../src/icons/mis-informes.png" alt="mis informes" />
                 <p>Informes</p>
               </a>
             </div>
             <div>
-              <a href="./mis-alertas.html" class="container-links">
+              <a href="/mis-alertas" id="misAlertasLink" class="container-links">
                 <img
                   src="../../src/icons/postular-a-moderador.png"
                   alt="postular a moderador"
                 />
-                <p>Mis Altertas</p>
+                <p>Mis Alertas</p>
               </a>
             </div>
           </div>
@@ -111,17 +111,17 @@
           </ul>
           <div class="social-media-icons">
             <div class="hover">
-              <a href="">
+              <a href="#">
                 <img src="../../src/icons/Group (1).svg" alt="" />
               </a>
             </div>
             <div class="hover">
-              <a href="">
+              <a href="#">
                 <img src="../../src/icons/Vector.svg" alt="" />
               </a>
             </div>
             <div class="hover">
-              <a href="">
+              <a href="#">
                 <img src="../../src/icons/Group.svg" alt="" />
               </a>
             </div>
@@ -129,15 +129,15 @@
         </div>
         <div class="about">
           <h3>Nosotros</h3>
-          <a href=""><p>¿Por qué suscribirme a Sálvame?</p></a>
+          <a href="#"><p>¿Por qué suscribirme a Sálvame?</p></a>
         </div>
         <div class="information">
           <h3>Información</h3>
-          <a href=""><p>Ver Alertas</p></a>
+          <a href="#"><p>Ver Alertas</p></a>
         </div>
         <div class="join">
           <h3>Únete</h3>
-          <a href=""><p>Postular a Moderador</p></a>
+          <a href="#"><p>Postular a Moderador</p></a>
         </div>
       </div>
     </footer>
@@ -145,7 +145,7 @@
       <form class="login-container" id="form" type="submit">
         <div class="item">
           <p>Sálvame</p>
-          <a href="../../index.html">Inicio</a>
+          <a href="/">Inicio</a>
         </div>
         <div class="itemtwo">
           <h2>Iniciar sesión</h2>
@@ -178,7 +178,7 @@
       <form class="singIn-container" id="formSingin">
         <div class="item">
           <p>Sálvame</p>
-          <a href="./index.html">Inicio</a>
+          <a href="/">Inicio</a>
         </div>
         <div class="itemtwo">
           <h2>Regístrate</h2>
@@ -267,6 +267,8 @@
     </section>
 
     <script src="../../build/js/app.js"></script>
+
     <script src="../../build/js/form.js"></script>
+
   </body>
 </html>

@@ -8,6 +8,40 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 });
 
+
+//animales por id
+document.addEventListener('DOMContentLoaded', function() {
+  // Array de nombres de animales
+  var animales = ['mono', 'serpiente', 'tigre', 'elefante', 'jirafa', 'leon', 'cocodrilo', 'pinguino', 'tortuga', 'koala', 'ballena', 'tucan', 'rinoceronte', 'zebra', 'hormiga', 'aguila', 'delfin', 'oso', 'gato', 'perro'];
+
+  // Ordenar alfabéticamente
+  animales.sort();
+
+  // Obtener el elemento select
+  var selectAnimales = document.getElementById('animales');
+
+  // Llenar la lista desplegable con opciones
+  animales.forEach(function(animal, index) {
+      var option = document.createElement('option');
+      option.value = index + 1; // El valor de la opción es el índice + 1
+      option.text = animal;  // El texto visible es el nombre del animal
+      selectAnimales.add(option);
+  });
+
+  // Agregar evento al formulario
+  var formulario = document.getElementById('miFormulario');
+  formulario.addEventListener('submit', function(event) {
+      event.preventDefault(); // Evitar que se envíe el formulario de la manera convencional
+
+      // Obtener el valor seleccionado (el id) y enviarlo
+      var selectedId = selectAnimales.value;
+      alert('ID del animal seleccionado: ' + selectedId);
+
+      // Aquí puedes realizar la lógica adicional para enviar el ID a través de AJAX u otras operaciones.
+  });
+});
+
+
 function siguientePaso() {
   // Obtener el paso actual
   let pasoActual = obtenerPasoActual();

@@ -16,6 +16,7 @@
       href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
       rel="stylesheet"
     />
+    <script src="build/js/user.js"></script>
   </head>
   <body id="body">
     <header>
@@ -25,6 +26,7 @@
           <div class="nav-bar_botones">
             <button id="btnSingIn">Registrarme</button>
             <button id="btnLogin">Inciar sesión</button>
+            <a href="#" id="linkPerfil">Mi Perfil</a>
           </div>
         </nav>
       </div>
@@ -48,19 +50,19 @@
       </section>
       <section class="container options">
         <div>
-          <a href="./Sections/AlertaNologin.html" class="container-links">
+          <a href="/crear-alerta-anonima" class="container-links">
             <img src="src/icons/relizar-alerta.png" alt="relizar alerta" />
             <p>Realizar Alerta</p>
           </a>
         </div>
         <div>
-          <a href="./Sections/verAlerta.html" class="container-links">
+          <a href="/ver-alertas" class="container-links">
             <img src="src/icons/ver-alerta.png" alt="ver alerta" />
             <p>Ver Alertas</p>
           </a>
         </div>
         <div>
-          <a href="../Desarrollo/informes.html" class="container-links">
+          <a href="/ver-informe" class="container-links">
             <img src="src/icons/mis-informes.png" alt="mis informes" />
             <p>Mis informes</p>
           </a>
@@ -175,7 +177,7 @@
       <form class="singIn-container" action="/signin"  id="formSingin" method="post">
         <div class="item">
           <p>Sálvame</p>
-          <a href="./index.html">Inicio</a>
+          <a href="/">Inicio</a>
         </div>
         <div class="itemtwo">
           <h2>Regístrate</h2>
@@ -265,5 +267,6 @@
 
     <script src="build/js/app.js"></script>
     <script src="build/js/form.js"></script>
+
   </body>
 </html>

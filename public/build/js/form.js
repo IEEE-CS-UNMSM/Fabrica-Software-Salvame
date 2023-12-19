@@ -21,10 +21,7 @@
         secLogin.classList.add('inactive');
         secSingIn.classList.remove('inactive');
         body.classList.add('overlay'); // Agregar una clase para crear un fondo oscuro
-      }
-
-
-    
+      }    
 
       function handleClickOutside(event) {
         if (event.target !== btnLogin &&

@@ -1,4 +1,63 @@
-h1{
+h1 {
     font-size: 7em !important;
     font-weight: 400 !important;
+}
+
+#mis-alertas {
+    width: 50%;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.alert-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    padding: 10px;
+    background: #FFF;
+    border: 1px solid #DDD;
+}
+
+.alert-id {
+    font-weight: bold;
+    font-size: 1.5em;
+    border: none;
+    border-radius: 5px;
+    background-color: #F5C577;
+    padding: 10px;
+}
+
+.alert-status {
+    display: flex;
+}
+
+.status-button {
+    padding: 10px;
+    font-size: 1.5em;
+    margin: 0 5px;
+    border: 1px solid #CCC;
+    /* Default gray background */
+    color: #333;
+    cursor: pointer;
+}
+.status-button.revisado.sinrevisar{
+    background-color: #F0F0F0;
+}
+
+/* Specific styles for each status */
+.status-button.revisado {
+    background-color: #FFEB3B;
+    /* Yellow for revisado */
+}
+
+.status-button.aceptado {
+    background-color: #4CAF50;
+    /* Green for aceptado */
+}
+
+.status-button.rechazado {
+    background-color: #F44336;
+    /* Red for rechazado */
 }
