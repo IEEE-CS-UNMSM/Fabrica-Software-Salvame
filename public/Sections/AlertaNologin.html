@@ -65,14 +65,14 @@
             </div>
             
         </div>
-        <form action="" method="post">
+        <form action="/alerta-anonima" method="post">
             <section class="content1" id="content1" >
 
             
                 <section class="subir-img content1">
                     <h1>Suelte el archivo aquí <br>o</h1>
                     
-                    <form id="upload-form">
+                    <form id="upload-form" method="post">
                         <label for="file-input" id="custom-upload-button">Capturar</label>
                         <input type="file" id="file-input" accept="image/*" style="display: none;" />
                     </form>
@@ -97,9 +97,14 @@
                     <option value="6">Caza Furtiva (Vicuña y guanaco)</option>
                     <option value="7">Animales Domésticos (Perros, otros)</option>
                 </select>
+
+                <label for="animales"></label>
+                  <select class="select-animales" id="animales">
+                    <option value="" selected disabled hidden>Seleccione una animal</option>
+                </select>
         
                 <section class="form-container">
-                    <form class="form-description" action="submit">
+                    <form class="form-description" action="submit" method="post">
                         <div>
                             <div class="input-box">
                                 <label  for="descrip-animal"></label>
@@ -148,6 +153,13 @@
                           <div class="mostrar-ubicacion__distancia">
                             <h3>Distancia</h3>
                             <p>0km</p>
+                          </div>
+                          <div>
+                            <input type="hidden" id="zipcode" name="zipcode" value="">
+                            <input type="hidden" id="departamento" name="departamento">
+                            <input type="hidden" id="provincia" name="provincia">
+                            <input type="hidden" id="direccionCompleta" name="direccionCompleta">
+
                           </div>
                         </div>
                 </div>
@@ -235,7 +247,7 @@
       </div>
     </footer>
     <section class="sec-singIn inactive " id="datos-local">
-      <form class="singIn-container" id="formSingin">
+      <form class="singIn-container" id="formSingin" method="post">
         <div class="item">
           <p>Sálvame</p>
           <button id="extranjero">Soy extranjero</button>
@@ -291,7 +303,7 @@
     </section>
 
     <section class="sec-singIn  inactive" id="datos-extranjero">
-      <form class="singIn-container" id="formSingin">
+      <form class="singIn-container" id="formSingin" method="post">
         <div class="item">
           <p>Sálvame</p>
         </div>
@@ -366,7 +378,7 @@
     </section>
     <script src="../build/js/map.js"></script>
     <script
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBDaeWicvigtP9xPv919E-RNoxfvC-Hqik&libraries=geometry&callback=iniciarMap"
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDtDhbjUF839GRewHqfAQRZncfUekSHFwc&libraries=geometry&callback=iniciarMap"
       async
       defer
     ></script>
