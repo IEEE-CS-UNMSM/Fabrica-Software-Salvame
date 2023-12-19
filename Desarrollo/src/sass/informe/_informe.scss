@@ -96,11 +96,14 @@
     transition: all 0.3s ease-in-out;
 
     &__image {
+        display: block;
         width: 100%;
+        aspect-ratio: 4/3;
+        object-fit: cover;
     }
 
     &__content {
-        background-image: url('../../src/img/pattern 8.png');
+        background-image: url('../../src/img/pattern-8.png');
         padding: 2rem;
     }
 
