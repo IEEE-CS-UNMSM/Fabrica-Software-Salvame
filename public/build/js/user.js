@@ -13,10 +13,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
             document.getElementById('btnSingIn').style.display = 'none';
             document.getElementById('btnLogin').style.display = 'none';
+
+            const id = userData.userId;
             // Mostrar un enlace al perfil
             const perfilLink = document.getElementById('linkPerfil');
             perfilLink.style.display = 'inline-block';
-            perfilLink.href = `/user/${userData.userId}`;
+            perfilLink.href = `/user/${id}`;
         })
         .catch(error => {
             console.error('Error fetching user data:', error);
@@ -24,3 +26,18 @@ document.addEventListener("DOMContentLoaded", function () {
     
     
 });
+
+
+  document.addEventListener("DOMContentLoaded", function () {
+    const userIdA = obtenerId(); // Asegúrate de tener tu lógica para obtener el ID
+
+    const misAlertasLink = document.getElementById("misAlertasLink");
+    misAlertasLink.href = `/user/${userIdA}/mis-alertas`;
+  });
+
+  function obtenerId() {
+    const currentUrl = window.location.href;
+    const userIdMatch = currentUrl.match(/\/user\/([^/]+)/);
+    return userIdMatch ? userIdMatch[1] : 'defaultUserId';
+  }
+

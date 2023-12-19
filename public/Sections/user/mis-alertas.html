@@ -1,27 +1,109 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mis Alertas</title>
-    <!-- Agrega un enlace a tu archivo de estilos si es necesario -->
-    <!-- <link rel="stylesheet" href="styles.css"> -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mis Alertas - Salvame</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Forum&family=Megrim&family=Poppins:wght@400;600&family=Readex+Pro&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="../../build/css/normalize.css" />
+    <link rel="stylesheet" href="../../build/css/Inicio.css" />
+    <link rel="stylesheet" href="../../build/css/mis-alertas.css" />
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+    <script src="../../build/js/user.js"></script>
+    <script src="../../build/js/mis-alertas.js"></script>
 </head>
-<body>
-    <h1>Mis Alertas</h1>
-    <table id="alertasTable">
-        <thead>
-            <tr>
-                <th>IDAlerta</th>
-                <th>Fecha de Alerta</th>
-                <th>Estatus</th>
-            </tr>
-        </thead>
-        <tbody>
-            <!-- Aquí se agregarán dinámicamente las filas de la tabla -->
-        </tbody>
-    </table>
-    
-    <script src="mis-alertas.js"></script>
+
+<body id="body">
+    <header>
+        <div class="container">
+            <nav class="nav-bar">
+                <a href="../"><img src="../../src/img/logo.png" alt="logo" /></a>
+                <div class="nav-bar_botones">
+                    <a href="/logout"><button id="btnSignOut">Cerrar Sesión</button></a>
+                </div>
+            </nav>
+        </div>
+
+
+    </header>
+    <main>
+        <section id="mis-alertas">
+            <h1>Mis alertas</h1>
+            <div id="alertsContainer"></div>
+        </section>
+
+
+
+    </main>
+
+    <footer class="footer">
+        <div class="container footer-content">
+            <div class="contributors">
+                <img src="../../src/img/logo.png" alt="logo" />
+                <ul>
+                    <li>
+                        <p>Benites Pardavé, Eder Gustavo</p>
+                    </li>
+                    <li>
+                        <p>Cueto Salazar, Sebastián Antonio</p>
+                    </li>
+                    <li>
+                        <p>Loli Collantes, Nilton Daniel</p>
+                    </li>
+                    <li>
+                        <p>Mendoza Bermejo, Darwin Karls</p>
+                    </li>
+                    <li>
+                        <p>Pineda Silupu, Kevin Jair</p>
+                    </li>
+                    <li>
+                        <p>Rojas Palacios, Dante Arhon</p>
+                    </li>
+                </ul>
+                <div class="social-media-icons">
+                    <div class="hover">
+                        <a href="">
+                            <img src="../../src/icons/Group (1).svg" alt="" />
+                        </a>
+                    </div>
+                    <div class="hover">
+                        <a href="">
+                            <img src="../../src/icons/Vector.svg" alt="" />
+                        </a>
+                    </div>
+                    <div class="hover">
+                        <a href="">
+                            <img src="../../src/icons/Group.svg" alt="" />
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="about">
+                <h3>Nosotros</h3>
+                <a href="">
+                    <p>¿Por qué suscribirme a Sálvame?</p>
+                </a>
+            </div>
+            <div class="information">
+                <h3>Información</h3>
+                <a href="">
+                    <p>Ver Alertas</p>
+                </a>
+            </div>
+            <div class="join">
+                <h3>Únete</h3>
+                <a href="">
+                    <p>Postular a Moderador</p>
+                </a>
+            </div>
+        </div>
+    </footer>
+
 </body>
+
 </html>

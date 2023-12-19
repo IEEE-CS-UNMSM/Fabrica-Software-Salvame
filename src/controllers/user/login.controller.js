@@ -29,7 +29,8 @@ export const login = async (req, res) => {
         const userPayload = {
             userId: userObject.idPerfilUsuario,
             userNombres: userObject.nombres,
-            userApellidos: userObject.apellidos
+            userApellidos: userObject.apellidos,
+            userDNI: userObject.dni
         };
 
         if (user.contraseña != contrasenia) {
