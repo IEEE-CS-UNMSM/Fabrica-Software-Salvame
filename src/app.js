@@ -80,6 +80,27 @@ app.get('/user/:userId/mis-alertas',authenticateUser, (req, res) => {
     res.sendFile(misAlertasPath);
 });
 
+app.get('/crear-alerta', (req, res) => {
+    const misAlertasPath = path.resolve(__dirname, '../public', 'Sections', 'CrearAlerta.html');
+    res.sendFile(misAlertasPath);
+});
+
+app.get('/crear-alerta-anonima', (req, res) => {
+    const misAlertasPath = path.resolve(__dirname, '../public', 'Sections', 'AlertaNoLogin.html');
+    res.sendFile(misAlertasPath);
+});
+
+app.get('/ver-alertas', (req, res) => {
+    const misAlertasPath = path.resolve(__dirname, '../public', 'Sections', 'verAlerta.html');
+    res.sendFile(misAlertasPath);
+});
+
+app.get('/ver-informe', (req, res) => {
+    const misAlertasPath = path.resolve(__dirname, '../public', 'Sections', 'informe.html');
+    res.sendFile(misAlertasPath);
+});
+
+
 app.use(express.urlencoded({ extended: true }));
 
 app.use(session({

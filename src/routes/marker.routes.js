@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { viewAllMarker, viewMarkermap } from "../controllers/marker.controller";
+import { viewAllMarker, viewMarkermap } from "../controllers/marker.controller.js";
 
 const router = Router();
 
