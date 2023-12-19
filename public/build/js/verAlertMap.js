@@ -1,42 +1,71 @@
 let map;
 let marker;
-const distanciaLugar = document.querySelector('.mostrar-ubicacion__distancia p');
-const lat = document.querySelector('.mostrar-ubicacion__titulo .lat');
-const lng = document.querySelector('.mostrar-ubicacion__titulo .lng');
 let userCoords = { lat: 0, lng: 0 };
+
+const calendar = document.querySelector("#fecha")
+const option = document.querySelector("#departament")
+const buscar = document.querySelector("#buscar")
+console.log(buscar);
+buscar.addEventListener("click", ()=>{console.log(calendar.value, option.value)})
+/* 
+option.addEventListener("click", ()=>{
+    console.log(option.value);
+}) */
+let dict ={
+    wasa:"wasa"
+} 
 
 
 //creamos array vacio para los marcadores 
 let coordenadas = [];
+let markers = [];
+//peticion pero para mostrar todas las alertas al incio
+const obtenerCoords =  async()=>{
+    if(option.value===0){
+    const res = fetch("http://localhost:3000/marker")
+    const coords = await res.json()
+    coords.array.forEach(element => {
+        let coord = {
+            lat:element["latitud"],
+            lng:element["longitud"]
+        }
+        coordenadas.push(coord)
+    });
+    }
+    else{
+        let dep = {departamento:option.value}
+        const res = fetch("http://localhost:3000/marker", {
+            method:"POST",
+            body:JSON.stringify(dep),
+            headers:{
+                "Content-Type":"Apliaction.json"
+            }
+        })    
+        const coords = await res.json()
+        coords.array.forEach(element => {
+        let coord = {
+            lat:element["latitud"],
+            lng:element["longitud"]
+        }
+        coordenadas.push(coord)
+    });
+        
 
+    }
+}
 
-const capturarButton = document.querySelector('.btn-capturar');
 
 function iniciarMap() {
-    const coord = { lat: -12.054357, lng: -77.084362 }; // Coordenadas de UNMSM
-    const coord2 = { lat: -12.06274765, lng: -77.149327 };
-    // Inicializar mapa
-    map = new google.maps.Map(document.getElementById('map'), { 
-        zoom: 5,
-        center: coord,
-    });
-
-    //peticion a la api
-
-
-    // Inicializar marker
-    
-    wasa = [marker = new google.maps.Marker({
-        position: coord,
-        map: map,
-        draggable: true,
-    })
-,
-    marker2 = new google.maps.Marker({
-        position: coord2,
-        map: map,
-        draggable: true,
-    })];
+    obtenerCoords();
+    //peticion a api
+        coordenadas.forEach((element) =>{
+            marker = new google.maps.Marker({
+                position:element,
+                map:map,
+                draggable:false
+            })
+            markers.push(marker)
+        })
     
 
     map.addListener('click', (evt) => {
