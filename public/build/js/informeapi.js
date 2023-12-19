@@ -37,7 +37,7 @@ fetch(apiUrl)
 
             let especie = document.createElement('p');
             especie.classList.add('Especie');
-            especie.textContent = animal.genero;
+            especie.textContent = animal.nombreComun;
             lugar.appendChild(especie);
 
             let zonas = document.createElement('p');

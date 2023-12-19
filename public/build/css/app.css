@@ -4,12 +4,6 @@ html {
   box-sizing: border-box;
 }
 
-
-#linkPerfil{
-  display: none;
-  color: #222;
-}
-
 *,
 *:before,
 *:after {
@@ -1184,10 +1178,13 @@ template {
   transition: all 0.3s ease-in-out;
 }
 .card__image {
+  display: block;
   width: 100%;
+  aspect-ratio: 4/3;
+  object-fit: cover;
 }
 .card__content {
-  background-image: url("../../src/img/pattern 8.png");
+  background-image: url("../../src/img/pattern-8.png");
   padding: 2rem;
 }
 .card .Familia {
